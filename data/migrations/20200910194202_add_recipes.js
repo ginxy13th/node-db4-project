@@ -1,11 +1,11 @@
 
 exports.up = function (knex) {
-    knex.schema.createTable('recipes', table => {
+   return knex.schema.createTable('recipes', table => {
      table.increments('id')
      table.text('name').unique().notNull()
    })
  
-    knex.schema.createTable('steps', table => {
+    .createTable('steps', table => {
      table.increments('id').primary()
      table.text('description').notNull()
      table
@@ -18,22 +18,22 @@ exports.up = function (knex) {
        .integer('step')
    })
  
-    knex.schema.createTable('ingredients', table => {
-     table.increments('id').primary()
+   .createTable('ingredients', table => {
+      table.increments('id').primary()
      table.text('name').unique().notNull()
    })
  
-    knex.schema.createTable('quantity', table => {
+    .createTable('quantity', table => {
      table.increments('id')
      table.text('qty')
    })
  
-    knex.schema.createTable('unit', table => {
+    .createTable('unit', table => {
      table.increments('id')
      table.text('description')
    })
  
-    knex.schema.createTable('recipes_ingredients', table => {
+    .createTable('recipes_ingredients', table => {
      table
        .integer('recipe_id')
        .references('id')
